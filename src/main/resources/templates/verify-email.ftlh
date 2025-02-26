@@ -135,7 +135,7 @@
           <td align="left" bgcolor="#ffffff"
               style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
             <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">
-              Xác minh địa chỉ email
+              Verify email address
             </h1>
           </td>
         </tr>
@@ -150,9 +150,7 @@
           <td align="left" bgcolor="#ffffff"
               style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
             <p style="margin: 0;">
-              Cảm ơn bạn đã bắt đầu quy trình tạo tài khoản của Electro Shop. Chúng tôi muốn chắc
-              chắn rằng đây thực sự là bạn. Vui lòng nhập mã xác minh sau khi nhận thông báo này. Nếu không muốn tạo tài
-              khoản, bạn có thể bỏ qua thông báo này. (Mã này có hiệu lực trong 10 phút).
+              Thank you for starting the account creation process at Srinivasa Battery World. We want to make sure it’s really you. Please enter the verification code after receiving this notification. If you do not wish to create an account, you can ignore this message. (This code is valid for 10 minutes).
             </p>
           </td>
         </tr>
@@ -181,8 +179,7 @@
           <td align="left" bgcolor="#ffffff"
               style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
             <p style="margin: 0;">
-              Nếu bạn không còn mở trang đăng ký, có thể nhấn <strong><a href="${link}" target="_blank">liên kết
-                  này</a></strong> để tiếp tục nhập mã xác nhận.
+             If you no longer have the registration page open, you can click on <strong><a href="${link}" target="_blank">this link</a></strong> to continue entering the verification code.
             </p>
           </td>
         </tr>
@@ -192,7 +189,7 @@
           <td align="left" bgcolor="#ffffff"
               style="padding: 0 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
             <p style="margin: 0;">
-              Electro Shop sẽ không bao giờ gửi email cho bạn và yêu cầu bạn tiết lộ hoặc xác minh mật khẩu của bạn.
+              Srinivasa Battery World will never send you an email asking you to disclose or verify your password.
             </p>
           </td>
         </tr>
@@ -201,7 +198,7 @@
         <tr>
           <td align="left" bgcolor="#ffffff"
               style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
-            <p style="margin: 0;">Chân thành cảm ơn, <br> Electro Shop </p>
+            <p style="margin: 0;">Thank you very much, <br> Srinivasa Battery World </p>
           </td>
         </tr>
         <!-- end copy -->

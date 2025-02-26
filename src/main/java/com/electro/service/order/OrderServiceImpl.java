@@ -34,7 +34,10 @@ import com.electro.repository.order.OrderRepository;
 import com.electro.repository.promotion.PromotionRepository;
 import com.electro.repository.waybill.WaybillLogRepository;
 import com.electro.repository.waybill.WaybillRepository;
+import com.electro.service.email.EmailSenderService;
 import com.electro.service.general.NotificationService;
+import java.text.MessageFormat;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.bytebuddy.utility.RandomString;
@@ -81,7 +84,7 @@ public class OrderServiceImpl implements OrderService {
     private final NotificationRepository notificationRepository;
     private final NotificationService notificationService;
     private final NotificationMapper notificationMapper;
-
+    private final EmailSenderService emailSenderService;
     private static final int USD_VND_RATE = 23_000;
 
     @Override
@@ -142,6 +145,13 @@ public class OrderServiceImpl implements OrderService {
         String username = authentication.getName();
 
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
+        String orderId = RandomString.make(12).toUpperCase();
+
+        // (5) Send email
+        Map<String, Object> attributes = Map.of(
+            "orderId",orderId,
+            "link", MessageFormat.format("{0}/signup?userId={1}", AppConstants.FRONTEND_HOST, user.getId()));
+        emailSenderService.sendOrderNotification(user.getEmail(), attributes);
 
         Cart cart = cartRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException(ResourceName.CART, FieldName.USERNAME, username));
@@ -149,7 +159,7 @@ public class OrderServiceImpl implements OrderService {
         // (1) Tạo đơn hàng
         Order order = new Order();
 
-        order.setCode(RandomString.make(12).toUpperCase());
+        order.setCode(orderId);
         order.setStatus(1); // Status 1: Đơn hàng mới
         order.setToName(user.getFullname());
         order.setToPhone(user.getPhone());
@@ -181,7 +191,7 @@ public class OrderServiceImpl implements OrderService {
                 .collect(Collectors.toSet()));
 
         // Calculate price values
-        // TODO: Vấn đề khuyến mãi
+        // TODO: Promotion issue
         BigDecimal totalAmount = BigDecimal.valueOf(order.getOrderVariants().stream()
                 .mapToDouble(orderVariant -> orderVariant.getAmount().doubleValue())
                 .sum());

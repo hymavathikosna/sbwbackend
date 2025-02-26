@@ -23,13 +23,21 @@ public class EmailSenderServiceImpl implements EmailSenderService {
     @Override
     public void sendVerificationToken(String toEmail, Map<String, Object> attributes) {
         String text = getEmailContent("verify-email.ftlh", attributes);
-        sendEmail(toEmail, "[Electro Shop] Xác thực email", text);
+        sendEmail(toEmail, "[Srinivasa Battery World] Email verification", text);
+    }
+
+    @Override
+    public void sendOrderNotification(String toEmail, Map<String, Object> attributes) {
+        String text = getEmailContent("order-notification-email.ftlh", attributes);
+        sendEmail(toEmail, "[Srinivasa Battery World] Email confirmation", text);
+        text = getEmailContent("order-notification-owner.ftlh", attributes);
+        sendEmail("srinivasabatteryworld47@gmail.com", "[Srinivasa Battery World] Email confirmation", text);
     }
 
     @Override
     public void sendForgetPasswordToken(String toEmail, Map<String, Object> attributes) {
         String text = getEmailContent("forget-password-email.ftlh", attributes);
-        sendEmail(toEmail, "[Electro Shop] Yêu cầu cấp lại mật khẩu", text);
+        sendEmail(toEmail, "[Srinivasa Battery World] Request password reset", text);
     }
 
     private String getEmailContent(String template, Map<String, Object> model) {

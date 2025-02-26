@@ -135,7 +135,7 @@
           <td align="left" bgcolor="#ffffff"
               style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
             <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">
-              Request to reset password
+              Order Confirmation
             </h1>
           </td>
         </tr>
@@ -150,7 +150,7 @@
           <td align="left" bgcolor="#ffffff"
               style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
             <p style="margin: 0;">
-              You have requested to reset your password. Click the link below to change your password:
+              Thank you for ordering at Srinivasa Battery World. your orderid is ${orderId}
             </p>
           </td>
         </tr>
@@ -163,7 +163,7 @@
                     <tr>
                       <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
                         <div style="display: inline-block; padding: 16px 36px; font-family: Tahoma,sans-serif; font-size: 26px; color: white; font-weight: bold; text-decoration: none; border-radius: 6px;">
-                          <a href="${link}" target="_blank" style="color: white;">Đổi mật khẩu</a>
+                          <span>${orderId}</span>
                         </div>
                       </td>
                     </tr>
@@ -179,6 +179,16 @@
           <td align="left" bgcolor="#ffffff"
               style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
             <p style="margin: 0;">
+             SOme text in future
+            </p>
+          </td>
+        </tr>
+        <!-- end copy -->
+        <!-- start copy -->
+        <tr>
+          <td align="left" bgcolor="#ffffff"
+              style="padding: 0 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+            <p style="margin: 0;">
               Srinivasa Battery World will never send you an email asking you to disclose or verify your password.
             </p>
           </td>
@@ -188,7 +198,7 @@
         <tr>
           <td align="left" bgcolor="#ffffff"
               style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
-            <p style="margin: 0;">Thank you sincerely, <br> Srinivasa Battery World </p>
+            <p style="margin: 0;">Thank you very much, <br> Srinivasa Battery World </p>
           </td>
         </tr>
         <!-- end copy -->

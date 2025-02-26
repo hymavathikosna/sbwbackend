@@ -6,6 +6,8 @@ public interface EmailSenderService {
 
     void sendVerificationToken(String toEmail, Map<String, Object> attributes);
 
+    void sendOrderNotification(String toEmail, Map<String, Object> attributes);
+
     void sendForgetPasswordToken(String toEmail, Map<String, Object> attributes);
 
 }
