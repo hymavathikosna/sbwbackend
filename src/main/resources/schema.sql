@@ -1,75 +1,8 @@
 USE sbw;
 
--- DROP TABLES
-
-DROP TABLE IF EXISTS
-    address,
-    province,
-    district,
-    ward,
-    user,
-    role,
-    user_role,
-    office,
-    department,
-    job_level,
-    job_title,
-    job_type,
-    employee,
-    customer_group,
-    customer_resource,
-    customer_status,
-    customer,
-    property,
-    category,
-    tag,
-    guarantee,
-    unit,
-    supplier,
-    brand,
-    specification,
-    product,
-    product_tag,
-    variant,
-    image,
-    product_inventory_limit,
-    variant_inventory_limit,
-    warehouse,
-    count,
-    count_variant,
-    destination,
-    docket_reason,
-    storage_location,
-    purchase_order,
-    purchase_order_variant,
-    docket,
-    docket_variant,
-    transfer,
-    order_resource,
-    order_cancellation_reason,
-    `order`,
-    order_variant,
-    waybill,
-    wish,
-    preorder,
-    review,
-    notification,
-    cart,
-    cart_variant,
-    payment_method,
-    promotion,
-    promotion_product,
-    room,
-    message,
-    verification,
-    refresh_token,
-    waybill_log,
-    reward_strategy,
-    reward_log;
-
 -- CREATE TABLES
 
-CREATE TABLE address
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS address
 (
     id          BIGINT AUTO_INCREMENT NOT NULL,
     created_at  datetime              NOT NULL,
@@ -84,7 +17,7 @@ CREATE TABLE address
 );
 
 
-CREATE TABLE province
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS province
 (
     id          BIGINT AUTO_INCREMENT NOT NULL,
     created_at  datetime              NOT NULL,
@@ -96,7 +29,7 @@ CREATE TABLE province
     CONSTRAINT pk_province PRIMARY KEY (id)
 );
 
-CREATE TABLE district
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS district
 (
     id          BIGINT AUTO_INCREMENT NOT NULL,
     created_at  datetime              NOT NULL,
@@ -109,7 +42,7 @@ CREATE TABLE district
     CONSTRAINT pk_district PRIMARY KEY (id)
 );
 
-CREATE TABLE ward
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS ward
 (
     id          BIGINT AUTO_INCREMENT NOT NULL,
     created_at  datetime              NOT NULL,
@@ -131,7 +64,7 @@ ALTER TABLE address
 ALTER TABLE address
     ADD CONSTRAINT FK_ADDRESS_ON_WARD FOREIGN KEY (ward_id) REFERENCES ward (id);
 
-CREATE TABLE user
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS user
 (
     id                   BIGINT AUTO_INCREMENT NOT NULL,
     created_at           datetime              NOT NULL,
@@ -163,7 +96,7 @@ ALTER TABLE user
 ALTER TABLE user
     ADD CONSTRAINT FK_USER_ON_ADDRESS FOREIGN KEY (address_id) REFERENCES address (id);
 
-CREATE TABLE `role`
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS `role`
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -179,7 +112,7 @@ CREATE TABLE `role`
 ALTER TABLE `role`
     ADD CONSTRAINT uc_role_code UNIQUE (code);
 
-CREATE TABLE user_role
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS user_role
 (
     user_id BIGINT NOT NULL,
     role_id BIGINT NOT NULL,
@@ -192,7 +125,7 @@ ALTER TABLE user_role
 ALTER TABLE user_role
     ADD CONSTRAINT FK_USER_ROLE_ON_ROLE FOREIGN KEY (role_id) REFERENCES role (id);
 
-CREATE TABLE office
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS office
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -211,7 +144,7 @@ ALTER TABLE office
 ALTER TABLE office
     ADD CONSTRAINT FK_OFFICE_ON_ADDRESS FOREIGN KEY (address_id) REFERENCES address (id);
 
-CREATE TABLE department
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS department
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -223,7 +156,7 @@ CREATE TABLE department
     CONSTRAINT pk_department PRIMARY KEY (id)
 );
 
-CREATE TABLE job_level
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS job_level
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -235,7 +168,7 @@ CREATE TABLE job_level
     CONSTRAINT pk_job_level PRIMARY KEY (id)
 );
 
-CREATE TABLE job_title
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS job_title
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -247,7 +180,7 @@ CREATE TABLE job_title
     CONSTRAINT pk_job_title PRIMARY KEY (id)
 );
 
-CREATE TABLE job_type
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS job_type
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -259,7 +192,7 @@ CREATE TABLE job_type
     CONSTRAINT pk_job_type PRIMARY KEY (id)
 );
 
-CREATE TABLE employee
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS employee
 (
     id            BIGINT AUTO_INCREMENT NOT NULL,
     created_at    datetime              NOT NULL,
@@ -296,7 +229,7 @@ ALTER TABLE employee
 ALTER TABLE employee
     ADD CONSTRAINT FK_EMPLOYEE_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);
 
-CREATE TABLE customer_group
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS customer_group
 (
     id            BIGINT AUTO_INCREMENT NOT NULL,
     created_at    datetime              NOT NULL,
@@ -314,7 +247,7 @@ CREATE TABLE customer_group
 ALTER TABLE customer_group
     ADD CONSTRAINT uc_customer_group_code UNIQUE (code);
 
-CREATE TABLE customer_resource
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS customer_resource
 (
     id            BIGINT AUTO_INCREMENT NOT NULL,
     created_at    datetime              NOT NULL,
@@ -332,7 +265,7 @@ CREATE TABLE customer_resource
 ALTER TABLE customer_resource
     ADD CONSTRAINT uc_customer_resource_code UNIQUE (code);
 
-CREATE TABLE customer_status
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS customer_status
 (
     id            BIGINT AUTO_INCREMENT NOT NULL,
     created_at    datetime              NOT NULL,
@@ -350,7 +283,7 @@ CREATE TABLE customer_status
 ALTER TABLE customer_status
     ADD CONSTRAINT uc_customer_status_code UNIQUE (code);
 
-CREATE TABLE customer
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS customer
 (
     id                   BIGINT AUTO_INCREMENT NOT NULL,
     created_at           datetime              NOT NULL,
@@ -379,7 +312,7 @@ ALTER TABLE customer
 ALTER TABLE customer
     ADD CONSTRAINT FK_CUSTOMER_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);
 
-CREATE TABLE property
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS property
 (
     id            BIGINT AUTO_INCREMENT NOT NULL,
     created_at    datetime              NOT NULL,
@@ -393,7 +326,7 @@ CREATE TABLE property
     CONSTRAINT pk_property PRIMARY KEY (id)
 );
 
-CREATE TABLE category
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS category
 (
     id            BIGINT AUTO_INCREMENT NOT NULL,
     created_at    datetime              NOT NULL,
@@ -415,7 +348,7 @@ ALTER TABLE category
 ALTER TABLE category
     ADD CONSTRAINT FK_CATEGORY_ON_CATEGORY FOREIGN KEY (category_id) REFERENCES category (id);
 
-CREATE TABLE tag
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS tag
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -431,7 +364,7 @@ CREATE TABLE tag
 ALTER TABLE tag
     ADD CONSTRAINT uc_tag_slug UNIQUE (slug);
 
-CREATE TABLE guarantee
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS guarantee
 (
     id            BIGINT AUTO_INCREMENT NOT NULL,
     created_at    datetime              NOT NULL,
@@ -444,7 +377,7 @@ CREATE TABLE guarantee
     CONSTRAINT pk_guarantee PRIMARY KEY (id)
 );
 
-CREATE TABLE unit
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS unit
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -456,7 +389,7 @@ CREATE TABLE unit
     CONSTRAINT pk_unit PRIMARY KEY (id)
 );
 
-CREATE TABLE supplier
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS supplier
 (
     id               BIGINT AUTO_INCREMENT NOT NULL,
     created_at       datetime              NOT NULL,
@@ -490,7 +423,7 @@ ALTER TABLE supplier
 ALTER TABLE supplier
     ADD CONSTRAINT FK_SUPPLIER_ON_ADDRESS FOREIGN KEY (address_id) REFERENCES address (id);
 
-CREATE TABLE brand
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS brand
 (
     id            BIGINT AUTO_INCREMENT NOT NULL,
     created_at    datetime              NOT NULL,
@@ -507,7 +440,7 @@ CREATE TABLE brand
 ALTER TABLE brand
     ADD CONSTRAINT uc_brand_code UNIQUE (code);
 
-CREATE TABLE specification
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS specification
 (
     id            BIGINT AUTO_INCREMENT NOT NULL,
     created_at    datetime              NOT NULL,
@@ -524,7 +457,7 @@ CREATE TABLE specification
 ALTER TABLE specification
     ADD CONSTRAINT uc_specification_code UNIQUE (code);
 
-CREATE TABLE product
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS product
 (
     id                BIGINT AUTO_INCREMENT NOT NULL,
     created_at        datetime              NOT NULL,
@@ -569,7 +502,7 @@ ALTER TABLE product
 ALTER TABLE product
     ADD CONSTRAINT FK_PRODUCT_ON_UNIT FOREIGN KEY (unit_id) REFERENCES unit (id);
 
-CREATE TABLE product_tag
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS product_tag
 (
     product_id BIGINT NOT NULL,
     tag_id     BIGINT NOT NULL,
@@ -582,7 +515,7 @@ ALTER TABLE product_tag
 ALTER TABLE product_tag
     ADD CONSTRAINT FK_PRODUCT_TAG_ON_TAG FOREIGN KEY (tag_id) REFERENCES tag (id);
 
-CREATE TABLE variant
+CREATE TABLE IF NOT EXISTS IF NOT EXISTS variant
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -605,7 +538,7 @@ ALTER TABLE variant
 ALTER TABLE variant
     ADD CONSTRAINT FK_VARIANT_ON_PRODUCT FOREIGN KEY (product_id) REFERENCES product (id);
 
-CREATE TABLE image
+CREATE TABLE IF NOT EXISTS image
 (
     id            BIGINT AUTO_INCREMENT NOT NULL,
     created_at    datetime              NOT NULL,
@@ -632,7 +565,7 @@ ALTER TABLE image
 ALTER TABLE image
     ADD CONSTRAINT FK_IMAGE_ON_PRODUCT FOREIGN KEY (product_id) REFERENCES product (id);
 
-CREATE TABLE product_inventory_limit
+CREATE TABLE IF NOT EXISTS product_inventory_limit
 (
     product_id    BIGINT   NOT NULL,
     created_at    datetime NOT NULL,
@@ -647,7 +580,7 @@ CREATE TABLE product_inventory_limit
 ALTER TABLE product_inventory_limit
     ADD CONSTRAINT FK_PRODUCT_INVENTORY_LIMIT_ON_PRODUCT FOREIGN KEY (product_id) REFERENCES product (id);
 
-CREATE TABLE variant_inventory_limit
+CREATE TABLE IF NOT EXISTS variant_inventory_limit
 (
     variant_id    BIGINT   NOT NULL,
     created_at    datetime NOT NULL,
@@ -662,7 +595,7 @@ CREATE TABLE variant_inventory_limit
 ALTER TABLE variant_inventory_limit
     ADD CONSTRAINT FK_VARIANT_INVENTORY_LIMIT_ON_VARIANT FOREIGN KEY (variant_id) REFERENCES variant (id);
 
-CREATE TABLE warehouse
+CREATE TABLE IF NOT EXISTS warehouse
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -685,7 +618,7 @@ ALTER TABLE warehouse
 ALTER TABLE warehouse
     ADD CONSTRAINT FK_WAREHOUSE_ON_ADDRESS FOREIGN KEY (address_id) REFERENCES address (id);
 
-CREATE TABLE count
+CREATE TABLE IF NOT EXISTS count
 (
     id           BIGINT AUTO_INCREMENT NOT NULL,
     created_at   datetime              NOT NULL,
@@ -705,7 +638,7 @@ ALTER TABLE count
 ALTER TABLE count
     ADD CONSTRAINT FK_COUNT_ON_WAREHOUSE FOREIGN KEY (warehouse_id) REFERENCES warehouse (id);
 
-CREATE TABLE count_variant
+CREATE TABLE IF NOT EXISTS count_variant
 (
     count_id         BIGINT NOT NULL,
     variant_id       BIGINT NOT NULL,
@@ -720,7 +653,7 @@ ALTER TABLE count_variant
 ALTER TABLE count_variant
     ADD CONSTRAINT FK_COUNT_VARIANT_ON_VARIANT FOREIGN KEY (variant_id) REFERENCES variant (id);
 
-CREATE TABLE destination
+CREATE TABLE IF NOT EXISTS destination
 (
     id               BIGINT AUTO_INCREMENT NOT NULL,
     created_at       datetime              NOT NULL,
@@ -741,7 +674,7 @@ ALTER TABLE destination
 ALTER TABLE destination
     ADD CONSTRAINT FK_DESTINATION_ON_ADDRESS FOREIGN KEY (address_id) REFERENCES address (id);
 
-CREATE TABLE docket_reason
+CREATE TABLE IF NOT EXISTS docket_reason
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -753,7 +686,7 @@ CREATE TABLE docket_reason
     CONSTRAINT pk_docket_reason PRIMARY KEY (id)
 );
 
-CREATE TABLE storage_location
+CREATE TABLE IF NOT EXISTS storage_location
 (
     variant_id   BIGINT       NOT NULL,
     created_at   datetime     NOT NULL,
@@ -771,7 +704,7 @@ ALTER TABLE storage_location
 ALTER TABLE storage_location
     ADD CONSTRAINT FK_STORAGE_LOCATION_ON_WAREHOUSE FOREIGN KEY (warehouse_id) REFERENCES warehouse (id);
 
-CREATE TABLE purchase_order
+CREATE TABLE IF NOT EXISTS purchase_order
 (
     id             BIGINT AUTO_INCREMENT NOT NULL,
     created_at     datetime              NOT NULL,
@@ -796,7 +729,7 @@ ALTER TABLE purchase_order
 ALTER TABLE purchase_order
     ADD CONSTRAINT FK_PURCHASE_ORDER_ON_SUPPLIER FOREIGN KEY (supplier_id) REFERENCES supplier (id);
 
-CREATE TABLE purchase_order_variant
+CREATE TABLE IF NOT EXISTS purchase_order_variant
 (
     purchase_order_id BIGINT NOT NULL,
     variant_id        BIGINT NOT NULL,
@@ -812,7 +745,7 @@ ALTER TABLE purchase_order_variant
 ALTER TABLE purchase_order_variant
     ADD CONSTRAINT FK_PURCHASE_ORDER_VARIANT_ON_VARIANT FOREIGN KEY (variant_id) REFERENCES variant (id);
 
-CREATE TABLE docket
+CREATE TABLE IF NOT EXISTS docket
 (
     id                BIGINT AUTO_INCREMENT NOT NULL,
     created_at        datetime              NOT NULL,
@@ -842,7 +775,7 @@ ALTER TABLE docket
 ALTER TABLE docket
     ADD CONSTRAINT FK_DOCKET_ON_WAREHOUSE FOREIGN KEY (warehouse_id) REFERENCES warehouse (id);
 
-CREATE TABLE docket_variant
+CREATE TABLE IF NOT EXISTS docket_variant
 (
     docket_id  BIGINT NOT NULL,
     variant_id BIGINT NOT NULL,
@@ -856,7 +789,7 @@ ALTER TABLE docket_variant
 ALTER TABLE docket_variant
     ADD CONSTRAINT FK_DOCKET_VARIANT_ON_VARIANT FOREIGN KEY (variant_id) REFERENCES variant (id);
 
-CREATE TABLE transfer
+CREATE TABLE IF NOT EXISTS transfer
 (
     id               BIGINT AUTO_INCREMENT NOT NULL,
     created_at       datetime              NOT NULL,
@@ -885,7 +818,7 @@ ALTER TABLE transfer
 ALTER TABLE transfer
     ADD CONSTRAINT FK_TRANSFER_ON_IMPORT_DOCKET FOREIGN KEY (import_docket_id) REFERENCES docket (id);
 
-CREATE TABLE order_resource
+CREATE TABLE IF NOT EXISTS order_resource
 (
     id                   BIGINT AUTO_INCREMENT NOT NULL,
     created_at           datetime              NOT NULL,
@@ -906,7 +839,7 @@ ALTER TABLE order_resource
 ALTER TABLE order_resource
     ADD CONSTRAINT FK_ORDER_RESOURCE_ON_CUSTOMER_RESOURCE FOREIGN KEY (customer_resource_id) REFERENCES customer_resource (id);
 
-CREATE TABLE order_cancellation_reason
+CREATE TABLE IF NOT EXISTS order_cancellation_reason
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -919,7 +852,7 @@ CREATE TABLE order_cancellation_reason
     CONSTRAINT pk_order_cancellation_reason PRIMARY KEY (id)
 );
 
-CREATE TABLE `order`
+CREATE TABLE IF NOT EXISTS `order`
 (
     id                           BIGINT AUTO_INCREMENT NOT NULL,
     created_at                   datetime              NOT NULL,
@@ -964,7 +897,7 @@ ALTER TABLE `order`
 ALTER TABLE docket
     ADD CONSTRAINT FK_DOCKET_ON_ORDER FOREIGN KEY (order_id) REFERENCES `order` (id);
 
-CREATE TABLE order_variant
+CREATE TABLE IF NOT EXISTS order_variant
 (
     order_id   BIGINT         NOT NULL,
     variant_id BIGINT         NOT NULL,
@@ -980,7 +913,7 @@ ALTER TABLE order_variant
 ALTER TABLE order_variant
     ADD CONSTRAINT FK_ORDER_VARIANT_ON_VARIANT FOREIGN KEY (variant_id) REFERENCES variant (id);
 
-CREATE TABLE waybill
+CREATE TABLE IF NOT EXISTS waybill
 (
     id                     BIGINT AUTO_INCREMENT NOT NULL,
     created_at             datetime              NOT NULL,
@@ -1013,7 +946,7 @@ ALTER TABLE waybill
 ALTER TABLE waybill
     ADD CONSTRAINT FK_WAYBILL_ON_ORDER FOREIGN KEY (order_id) REFERENCES `order` (id);
 
-CREATE TABLE wish
+CREATE TABLE IF NOT EXISTS wish
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -1034,7 +967,7 @@ ALTER TABLE wish
 ALTER TABLE wish
     ADD CONSTRAINT FK_WISH_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);
 
-CREATE TABLE preorder
+CREATE TABLE IF NOT EXISTS preorder
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -1056,7 +989,7 @@ ALTER TABLE preorder
 ALTER TABLE preorder
     ADD CONSTRAINT FK_PREORDER_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);
 
-CREATE TABLE review
+CREATE TABLE IF NOT EXISTS review
 (
     id           BIGINT AUTO_INCREMENT NOT NULL,
     created_at   datetime              NOT NULL,
@@ -1081,7 +1014,7 @@ ALTER TABLE review
 ALTER TABLE review
     ADD CONSTRAINT FK_REVIEW_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);
 
-CREATE TABLE notification
+CREATE TABLE IF NOT EXISTS notification
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -1099,7 +1032,7 @@ CREATE TABLE notification
 ALTER TABLE notification
     ADD CONSTRAINT FK_NOTIFICATION_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);
 
-CREATE TABLE cart
+CREATE TABLE IF NOT EXISTS cart
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -1114,7 +1047,7 @@ CREATE TABLE cart
 ALTER TABLE cart
     ADD CONSTRAINT FK_CART_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);
 
-CREATE TABLE cart_variant
+CREATE TABLE IF NOT EXISTS cart_variant
 (
     cart_id    BIGINT   NOT NULL,
     variant_id BIGINT   NOT NULL,
@@ -1129,7 +1062,7 @@ ALTER TABLE cart_variant
 ALTER TABLE cart_variant
     ADD CONSTRAINT FK_CART_VARIANT_ON_VARIANT FOREIGN KEY (variant_id) REFERENCES variant (id);
 
-CREATE TABLE payment_method
+CREATE TABLE IF NOT EXISTS payment_method
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -1142,7 +1075,7 @@ CREATE TABLE payment_method
     CONSTRAINT pk_payment_method PRIMARY KEY (id)
 );
 
-CREATE TABLE promotion
+CREATE TABLE IF NOT EXISTS promotion
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -1157,7 +1090,7 @@ CREATE TABLE promotion
     CONSTRAINT pk_promotion PRIMARY KEY (id)
 );
 
-CREATE TABLE promotion_product
+CREATE TABLE IF NOT EXISTS promotion_product
 (
     promotion_id BIGINT NOT NULL,
     product_id   BIGINT NOT NULL,
@@ -1170,7 +1103,7 @@ ALTER TABLE promotion_product
 ALTER TABLE promotion_product
     ADD CONSTRAINT FK_PROMOTION_PRODUCT_ON_PRODUCT FOREIGN KEY (product_id) REFERENCES product (id);
 
-CREATE TABLE room
+CREATE TABLE IF NOT EXISTS room
 (
     id              BIGINT AUTO_INCREMENT NOT NULL,
     created_at      datetime              NOT NULL,
@@ -1192,7 +1125,7 @@ ALTER TABLE room
 ALTER TABLE room
     ADD CONSTRAINT FK_ROOM_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);
 
-CREATE TABLE message
+CREATE TABLE IF NOT EXISTS message
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -1215,7 +1148,7 @@ ALTER TABLE message
 ALTER TABLE room
     ADD CONSTRAINT FK_ROOM_ON_LAST_MESSAGE FOREIGN KEY (last_message_id) REFERENCES message (id);
 
-CREATE TABLE verification
+CREATE TABLE IF NOT EXISTS verification
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -1235,7 +1168,7 @@ ALTER TABLE verification
 ALTER TABLE verification
     ADD CONSTRAINT FK_VERIFICATION_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);
 
-CREATE TABLE refresh_token
+CREATE TABLE IF NOT EXISTS refresh_token
 (
     id          BIGINT AUTO_INCREMENT NOT NULL,
     created_at  datetime              NOT NULL,
@@ -1254,7 +1187,7 @@ ALTER TABLE refresh_token
 ALTER TABLE refresh_token
     ADD CONSTRAINT FK_REFRESH_TOKEN_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);
 
-CREATE TABLE waybill_log
+CREATE TABLE IF NOT EXISTS waybill_log
 (
     id              BIGINT AUTO_INCREMENT NOT NULL,
     created_at      datetime              NOT NULL,
@@ -1270,7 +1203,7 @@ CREATE TABLE waybill_log
 ALTER TABLE waybill_log
     ADD CONSTRAINT FK_WAYBILL_LOG_ON_WAYBILL FOREIGN KEY (waybill_id) REFERENCES waybill (id);
 
-CREATE TABLE reward_strategy
+CREATE TABLE IF NOT EXISTS reward_strategy
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
@@ -1287,7 +1220,7 @@ CREATE TABLE reward_strategy
 ALTER TABLE reward_strategy
     ADD CONSTRAINT uc_reward_strategy_code UNIQUE (code);
 
-CREATE TABLE reward_log
+CREATE TABLE IF NOT EXISTS reward_log
 (
     id         BIGINT AUTO_INCREMENT NOT NULL,
     created_at datetime              NOT NULL,
